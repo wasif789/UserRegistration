@@ -10,11 +10,12 @@ namespace UserRegistration
         public static string lastname;
         public static string firstname;
         public static string emails;
-
+        public static string PhoneNumber;
         public static void GetUserInformation()
         {
             Regex regex = new Regex(@"^[A-Z][a-z]{2,}$");
             Regex email = new Regex(@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
+            Regex phone = new Regex(@"^[0-9]+\s[0-9]{10}$");
             Console.WriteLine("\nEnter First Name starting with Caps(min 3 characters)");
             while (true)
             {
@@ -57,9 +58,23 @@ namespace UserRegistration
                     Console.WriteLine("Please enter a Valid Email!");
                 }
             }
+            Console.WriteLine("\nEnter Phone Number in the form (COUNTRY CODE \"Space\" 10-digit PHONE NUMBER)");
+            while (true)
+            {
+                PhoneNumber = Console.ReadLine();
+                if (phone.IsMatch(PhoneNumber))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a Valid Email!");
+                }
+            }
             Console.WriteLine("Your First name is: {0}", firstname);
             Console.WriteLine("Your Last name is: {0}", lastname);
             Console.WriteLine("Your Email is: {0}", emails);
+            Console.WriteLine("Your Phone number is: {0}", PhoneNumber);
         }
     }
 }
