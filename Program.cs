@@ -6,7 +6,9 @@ namespace UserRegistration
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to user registration program");
+            Console.WriteLine("Welcome to user registration program!");
+            UserDetails.GetUserInformation();
+
         }
     }
 }
