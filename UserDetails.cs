@@ -19,7 +19,9 @@ namespace UserRegistration
             Regex phone = new Regex(@"^[0-9]+\s[0-9]{10}$");
             //Regex passWord = new Regex(@"[a-zA-z0-9]{8,}$");
             //Regex passWord = new Regex(@"^(?=.*[A-Z]).{8,}$");
-            Regex passWord = new Regex(@"^(?=.*[0-9])(?=.*[A-Z]).{8,}$");
+            //Regex passWord = new Regex(@"^(?=.*[0-9])(?=.*[A-Z]).{8,}$");
+            string pattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8}$";
+            Regex passWord = new Regex(pattern);
             Console.WriteLine("\nEnter First Name starting with Caps(min 3 characters)");
             while (true)
             {
@@ -62,6 +64,7 @@ namespace UserRegistration
                     Console.WriteLine("Please enter a Valid Email!");
                 }
             }
+            //get phone number from user
             Console.WriteLine("\nEnter Phone Number in the form (COUNTRY CODE \"Space\" 10-digit PHONE NUMBER)");
             while (true)
             {
@@ -74,7 +77,8 @@ namespace UserRegistration
                 {
                     Console.WriteLine("Please enter a Valid Email!");
                 }
-            }//Get PassWord from user
+            }
+            //Get PassWord from user
             Console.WriteLine("\nEnter Password (minimum 8 characters)");
             while (true)
             {
