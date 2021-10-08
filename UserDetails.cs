@@ -17,7 +17,8 @@ namespace UserRegistration
             Regex regex = new Regex(@"^[A-Z][a-z]{2,}$");
             Regex email = new Regex(@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
             Regex phone = new Regex(@"^[0-9]+\s[0-9]{10}$");
-            Regex passWord = new Regex(@"[a-zA-z0-9]{8,}$");
+            //Regex passWord = new Regex(@"[a-zA-z0-9]{8,}$");
+            Regex passWord = new Regex(@"^(?=.*[A-Z]).{8,}$");
             Console.WriteLine("\nEnter First Name starting with Caps(min 3 characters)");
             while (true)
             {
