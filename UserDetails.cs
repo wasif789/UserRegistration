@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
 
 namespace UserRegistration
 {
@@ -58,62 +61,99 @@ namespace UserRegistration
         //Get First Name from user
         public static string GetFirstName(string firstname)
         {
-
-            if (regex.IsMatch(firstname))
+            try
             {
-                return firstname;
+                if (firstname.Equals(""))
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Valid First Name!");
+                }
+                if (regex.IsMatch(firstname))
+                {
+                    return firstname;
+                }
+                else
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.INVALID_MESSAGE, "Please enter a Valid First Name!");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Please enter a Valid First Name!");
+                return ex.Message;
             }
 
-            return default;
         }
         //Get Last Name from user
         public static string GetLastName(string lastname)
         {
-
-            if (regex.IsMatch(lastname))
+            try
             {
-                return lastname;
+                if (lastname.Equals(""))
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Valid Last Name!");
+                }
+                if (regex.IsMatch(lastname))
+                {
+                    return lastname;
+                }
+                else
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.INVALID_MESSAGE, "Please enter a Valid Last Name!");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Please enter a Valid Last Name!");
+                return ex.Message;
             }
-            return default;
-
         }
 
         //Get Email from user
         public static string GetEmail(string emails)
         {
-            if (email.IsMatch(emails))
+            try
             {
-                return emails;
+                if (emails.Equals(""))
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Valid Email!");
+                }
+                if (email.IsMatch(emails))
+                {
+                    return emails;
+                }
+                else
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.INVALID_MESSAGE, "Please enter a Valid Email!");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Please enter a Valid Email!");
+                return ex.Message;
             }
 
-            return default;
         }
         //Get Phone Number from user
         public static string GetPhoneNumber(string phoneNumber)
         {
-
-
-            if (phone.IsMatch(phoneNumber))
+            try
             {
-                return phoneNumber;
+                if (phoneNumber.Equals(""))
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Phone Number!");
+                }
+                if (phone.IsMatch(phoneNumber))
+                {
+                    return phoneNumber;
+                }
+                else
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Phone Number!");
+                }
+
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Please enter a Valid Phone Number!");
+                return ex.Message;
             }
-            return default;
+
 
         }
         //Get PassWord from user
@@ -121,15 +161,26 @@ namespace UserRegistration
         {
             string pattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
             Regex passWord = new Regex(pattern);
-            if (passWord.IsMatch(Password))
+            try
             {
-                return Password;
+                if (Password.Equals(""))
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Password!");
+                }
+                if (passWord.IsMatch(Password))
+                {
+                    return Password;
+                }
+                else
+                {
+                    throw new CustomisedException(CustomisedException.ExceptionType.EMPTY_MESSAGE, "Please enter a Password!");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("Please enter a Valid Password (minimum 8 characters)!");
+                return ex.Message;
             }
-            return default;
+
         }
     }
 }
