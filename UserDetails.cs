@@ -22,7 +22,7 @@ namespace UserRegistration
 
         public static void GetUserInformation()
         {
-
+            //Get input from user
             Console.WriteLine("\nEnter First Name starting with Caps(minimum 3 characters)");
             firstname = Console.ReadLine();
             GetFirstName(firstname);
@@ -59,7 +59,7 @@ namespace UserRegistration
         }
 
         //Get First Name from user
-        public static string GetFirstName(string firstname)
+        public static Func<string, string> GetFirstName = (firstname) =>
         {
             try
             {
@@ -81,9 +81,9 @@ namespace UserRegistration
                 return ex.Message;
             }
 
-        }
+        };
         //Get Last Name from user
-        public static string GetLastName(string lastname)
+        public static Func<string, string> GetLastName = (lastname) =>
         {
             try
             {
@@ -104,10 +104,10 @@ namespace UserRegistration
             {
                 return ex.Message;
             }
-        }
+        };
 
         //Get Email from user
-        public static string GetEmail(string emails)
+        public static Func<string, string> GetEmail = (emails) =>
         {
             try
             {
@@ -129,9 +129,9 @@ namespace UserRegistration
                 return ex.Message;
             }
 
-        }
+        };
         //Get Phone Number from user
-        public static string GetPhoneNumber(string phoneNumber)
+        public static Func<string, string> GetPhoneNumber = (phoneNumber) =>
         {
             try
             {
@@ -155,9 +155,9 @@ namespace UserRegistration
             }
 
 
-        }
+        };
         //Get PassWord from user
-        public static string GetPassword(string Password)
+        public static Func<string, string> GetPassword = (Password) =>
         {
             string pattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
             Regex passWord = new Regex(pattern);
@@ -181,7 +181,7 @@ namespace UserRegistration
                 return ex.Message;
             }
 
-        }
+        };
     }
 }
 
